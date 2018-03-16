@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_updown"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_updown_ratio"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_bid_price"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_ask_price"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_volume"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_total_volume"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_bid_volume"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_ask_volume"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_high"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_low"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_open"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_amplitude"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_preclose"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="@dimen/wls_symbol_list_column_width"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/equal"
+        android:textSize="@dimen/wls_symbol_list_cell_text_size" />
+
+</LinearLayout>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">DemoForWLS</string>
+
+    <string name="wls_strike">成交</string>
+    <string name="wls_updown">漲跌</string>
+    <string name="wls_updown_ratio">幅度</string>
+    <string name="wls_bid_price">買進</string>
+    <string name="wls_ask_price">賣出</string>
+    <string name="wls_volume">單量</string>
+    <string name="wls_total_volume">總量</string>
+    <string name="wls_bid_volume">買量</string>
+    <string name="wls_ask_volume">賣量</string>
+    <string name="wls_high">最高</string>
+    <string name="wls_low">最低</string>
+    <string name="wls_open">開盤</string>
+    <string name="wls_amplitude">振幅</string>
+    <string name="wls_preclose">昨收</string>
+    <string name="wls_time">時間</string>
 </resources>

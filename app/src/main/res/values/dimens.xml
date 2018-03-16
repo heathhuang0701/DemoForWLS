@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="main_tab_bar_height">42dp</dimen>
+    <dimen name="wls_symbol_list_column_width">80dp</dimen>
+    <dimen name="wls_symbol_list_column_height">36dp</dimen>
+    <dimen name="wls_symbol_list_column_text_size">16sp</dimen>
+    <dimen name="wls_symbol_list_cell_height">44dp</dimen>
+    <dimen name="wls_symbol_list_cell_text_size">16sp</dimen>
+</resources>

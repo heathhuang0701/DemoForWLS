@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.MainActivity" >
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/main_tab_bar_height"
+        android:layout_height="match_parent"/>
+
+    <com.liqi.android.demo_for_wls.main.view.BottomBar
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_tab_bar_height"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"/>
+
+</FrameLayout>
