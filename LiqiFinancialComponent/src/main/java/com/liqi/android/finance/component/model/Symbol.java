@@ -1,4 +1,4 @@
-package com.liqi.android.demo_for_wls.model;
+package com.liqi.android.finance.component.model;
 
 import io.reactivex.subjects.ReplaySubject;
 

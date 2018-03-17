@@ -1,4 +1,4 @@
-package com.liqi.android.demo_for_wls.model;
+package com.liqi.android.finance.component.model;
 
 /**
  * Created by heath on 2018/3/17.

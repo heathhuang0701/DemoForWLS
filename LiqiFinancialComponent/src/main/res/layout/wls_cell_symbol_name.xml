@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <com.github.mikephil.charting.charts.CandleStickChart
+        android:id="@+id/chart"
+        android:layout_width="16dp"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:layout_marginStart="2dp"/>
+
+    <TextView
+        android:id="@+id/tv_symbol_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/wls_symbol_list_cell_height"
+        android:layout_marginStart="2dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        tools:text="111"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"/>
+
+</LinearLayout>

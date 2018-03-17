@@ -1,4 +1,4 @@
-package com.liqi.android.demo_for_wls.symbols;
+package com.liqi.android.finance.component.view;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,11 +18,11 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.CandleData;
 import com.github.mikephil.charting.data.CandleDataSet;
 import com.github.mikephil.charting.data.CandleEntry;
-import com.liqi.android.demo_for_wls.BaseFragment;
-import com.liqi.android.demo_for_wls.R;
-import com.liqi.android.demo_for_wls.model.Symbol;
-import com.liqi.android.demo_for_wls.utils.InterfaceUtil;
-import com.liqi.android.demo_for_wls.vm.SymbolViewModel;
+import com.liqi.android.finance.component.BaseFragment;
+import com.liqi.android.finance.component.R;
+import com.liqi.android.finance.component.model.Symbol;
+import com.liqi.android.finance.component.utils.InterfaceUtil;
+import com.liqi.android.finance.component.vm.SymbolViewModel;
 
 import java.util.ArrayList;
 

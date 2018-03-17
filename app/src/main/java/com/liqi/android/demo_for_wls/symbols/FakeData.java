@@ -1,7 +1,7 @@
 package com.liqi.android.demo_for_wls.symbols;
 
-import com.liqi.android.demo_for_wls.model.QuoteUpdate;
-import com.liqi.android.demo_for_wls.model.Symbol;
+import com.liqi.android.finance.component.model.QuoteUpdate;
+import com.liqi.android.finance.component.model.Symbol;
 
 import java.util.ArrayList;
 

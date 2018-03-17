@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="食品工業"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/column_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="商品"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:background="@color/colorPrimary" />
+
+            <ListView
+                android:id="@+id/listview_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fastScrollEnabled="false"
+                android:overScrollMode="never">
+
+            </ListView>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/wls_symbol_list_column_height"
+                    android:orientation="horizontal"
+                    android:background="@color/colorPrimary" >
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_strike"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_updown"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_updown_ratio"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_bid_price"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_ask_price"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_volume"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_total_volume"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_bid_volume"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_ask_volume"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_high"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_low"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_open"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_amplitude"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_preclose"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/wls_symbol_list_column_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/wls_time"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/wls_symbol_list_column_text_size" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listview_product_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fastScrollEnabled="false"
+                    android:overScrollMode="never">
+
+                </ListView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

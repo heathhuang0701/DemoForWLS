@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#242C35</color>
     <color name="colorSecondary">#1D1E25</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="main_tab_selected">#479DD5</color>
-    <color name="main_tab_unselected">#3F454B</color>
+    <color name="up">#FF413B</color>
+    <color name="down">#5BFF55</color>
+    <color name="equal">#DFE376</color>
 </resources>

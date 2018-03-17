@@ -1,15 +1,12 @@
-package com.liqi.android.demo_for_wls;
+package com.liqi.android.finance.component;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.liqi.android.demo_for_wls.utils.InterfaceUtil;
 
 import java.util.ArrayList;
 
@@ -18,7 +15,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 /**
  * Created by heath on 2018/3/14.
  */
-public class BaseFragment extends SupportFragment implements InterfaceUtil.IStartActivity {
+public class BaseFragment extends SupportFragment {
     protected String TAG = getClass().getSimpleName();
     protected Context mContext;
     private ArrayList<Bitmap> _bitmaps;
@@ -84,15 +81,5 @@ public class BaseFragment extends SupportFragment implements InterfaceUtil.IStar
             }
         }
         _drawables = null;
-    }
-
-    @Override
-    public void callActivity(Intent intent) {
-        startActivity(intent);
-    }
-
-    @Override
-    public void callActivityForResult(Intent intent, int requestCode) {
-        startActivityForResult(intent, requestCode);
     }
 }

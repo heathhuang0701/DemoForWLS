@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.liqi.android.demo_for_wls.R;
-import com.liqi.android.demo_for_wls.model.QuoteUpdate;
-import com.liqi.android.demo_for_wls.model.Symbol;
+import com.liqi.android.finance.component.model.QuoteUpdate;
+import com.liqi.android.finance.component.model.Symbol;
+import com.liqi.android.finance.component.view.SymbolListFragment;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -34,6 +35,9 @@ public class SymbolsFragment extends SupportFragment {
     private Runnable loop_task = new Runnable() {
         @Override
         public void run() {
+            /*
+                模擬接收行情下行API後的處理，實際使用應由API更新行情
+             */
             if (quote_timer != null) {
                 quote_timer.cancel();
                 quote_timer = null;
@@ -58,6 +62,9 @@ public class SymbolsFragment extends SupportFragment {
                         fakeQuote.high = String.valueOf(rounded(strike + 1, 2));
                         fakeQuote.low = String.valueOf(rounded(strike - 1, 2));
 
+                        /*
+                            更新行情
+                         */
                         for (int j = 0; j < symbols.size(); j++) {
                             Symbol symbol = symbols.get(j);
                             if (fakeQuote.code.equals(symbol.code)) {
@@ -65,8 +72,6 @@ public class SymbolsFragment extends SupportFragment {
                             }
                         }
                     }
-
-
                 }
 
                 @Override
@@ -92,11 +97,15 @@ public class SymbolsFragment extends SupportFragment {
         loop_handler = new Handler(Looper.getMainLooper());
         LinearLayout mRootView = (LinearLayout) inflater.inflate(R.layout.fragment_container, container, false);
 
+        /*
+            將商品資料Symbol列表作為參數載入SymbolListFragment後即可呈現商品列表
+            使用第三方Fragment，優點在於除了基本的Activity內嵌Fragment之外，也可Fragment內嵌Fragment
+            請見https://github.com/YoKeyword/Fragmentation
+         */
         symbols = FakeData.genSymbols();
         Bundle bundle = new Bundle();
         bundle.putSerializable("symbols", symbols);
         SymbolListFragment listFragment = SymbolListFragment.newInstance(bundle);
-
         loadRootFragment(R.id.container, listFragment);
 
         return mRootView;
