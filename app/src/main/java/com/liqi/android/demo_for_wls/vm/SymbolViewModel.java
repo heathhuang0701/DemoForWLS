@@ -16,7 +16,11 @@ import com.liqi.android.demo_for_wls.utils.InterfaceUtil;
 
 import java.math.BigDecimal;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by heath on 2018/3/14.
@@ -52,27 +56,27 @@ public class SymbolViewModel {
     private Runnable loop_task = new Runnable() {
         @Override
         public void run() {
-        if (quote_timer != null) {
-            quote_timer.cancel();
-            quote_timer = null;
+            if (quote_timer != null) {
+                quote_timer.cancel();
+                quote_timer = null;
+            }
+
+            long interval = (long)(Math.random()* 1500 + 500);
+            quote_timer = new CountDownTimer(300000, interval) {
+                @Override
+                public void onTick(long l) {
+                    handleQuoteUpdate(symbol);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+            quote_timer.start();
+            Log.i(TAG, "CountDownTimer start");
         }
-
-        long interval = (long)(Math.random()* 1500 + 500);
-        quote_timer = new CountDownTimer(300000, interval) {
-            @Override
-            public void onTick(long l) {
-                handleQuoteUpdate(symbol);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        };
-        quote_timer.start();
-        Log.i(TAG, "CountDownTimer start");
-    }
-};
+    };
 
     @Override
     protected void finalize() throws Throwable {
@@ -97,7 +101,29 @@ public class SymbolViewModel {
         this.code.setValue(symbol.code);
         this.name.setValue(symbol.name);
 
-        startFakeQuote();
+//        startFakeQuote();
+
+        DisposableObserver<Symbol> quoteUpdateObserver = new DisposableObserver<Symbol>() {
+            @Override
+            public void onNext(@NonNull Symbol symbol) {
+                handleQuoteUpdate(symbol);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        disposables.add(quoteUpdateObserver);
+        symbol.quoteUpdateSubject
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(quoteUpdateObserver);
     }
 
     private void startFakeQuote() {
@@ -115,24 +141,23 @@ public class SymbolViewModel {
     }
 
     private void handleQuoteUpdate(Symbol symbol) {
-        double strike = rounded(Double.parseDouble(symbol.price) - 0.7 + Math.random(), 2);
-        String price = String.valueOf(strike);
+        String price = symbol.price;
         if (!TextUtils.isEmpty(price)) {
             this.price.setValue(price);
         }
-        String updown = String.valueOf(rounded(strike - Double.parseDouble(symbol.preclose), 2));
+        String updown = symbol.updown;
         if (!TextUtils.isEmpty(updown)) {
             this.updown.setValue(updown);
         }
-        String updownRatio = String.valueOf(rounded(Math.abs(Double.parseDouble(updown)) / Double.parseDouble(symbol.preclose), 2));
+        String updownRatio = symbol.updownRatio;
         if (!TextUtils.isEmpty(updownRatio)) {
             this.updownRatio.setValue(updownRatio);
         }
-        String bidPrice = String.valueOf(rounded(strike - 0.05, 2));
+        String bidPrice = symbol.bidPrice;
         if (!TextUtils.isEmpty(bidPrice)) {
             this.bidPrice.setValue(bidPrice);
         }
-        String askPrice = String.valueOf(rounded(strike + 0.05, 2));
+        String askPrice = symbol.askPrice;
         if (!TextUtils.isEmpty(askPrice)) {
             this.askPrice.setValue(askPrice);
         }
@@ -140,24 +165,23 @@ public class SymbolViewModel {
         if (!TextUtils.isEmpty(volume)) {
             this.volume.setValue(volume);
         }
-        symbol.totalVolume = String.valueOf(Integer.valueOf(symbol.totalVolume) + (int)(Math.random()* 5));
         String totalVolume = symbol.totalVolume;
         if (!TextUtils.isEmpty(totalVolume)) {
             this.totalVolume.setValue(totalVolume);
         }
-        String bidVolume = String.valueOf((int)(Math.random()* 5));
+        String bidVolume = symbol.bidVolume;
         if (!TextUtils.isEmpty(bidVolume)) {
             this.bidVolume.setValue(bidVolume);
         }
-        String askVolume = String.valueOf((int)(Math.random()* 5));
+        String askVolume = symbol.askVolume;
         if (!TextUtils.isEmpty(askVolume)) {
             this.askVolume.setValue(askVolume);
         }
-        String high = String.valueOf(rounded(strike + 1, 2));
+        String high = symbol.high;
         if (!TextUtils.isEmpty(high)) {
             this.high.setValue(high);
         }
-        String low = String.valueOf(rounded(strike - 1, 2));
+        String low = symbol.low;
         if (!TextUtils.isEmpty(low)) {
             this.low.setValue(low);
         }
@@ -178,19 +202,99 @@ public class SymbolViewModel {
             this.time.setValue(time);
         }
 
-        double value = strike - Double.parseDouble(open);
-        if (value > 0) {
-            textColor.setValue(ContextCompat.getColor(mContext, R.color.up));
-        } else if (value < 0) {
-            textColor.setValue(ContextCompat.getColor(mContext, R.color.down));
-        } else {
-            textColor.setValue(ContextCompat.getColor(mContext, R.color.equal));
+        if (!TextUtils.isEmpty(price) && !TextUtils.isEmpty(open)) {
+            double value = Double.parseDouble(price) - Double.parseDouble(open);
+            if (value > 0) {
+                textColor.setValue(ContextCompat.getColor(mContext, R.color.up));
+            } else if (value < 0) {
+                textColor.setValue(ContextCompat.getColor(mContext, R.color.down));
+            } else {
+                textColor.setValue(ContextCompat.getColor(mContext, R.color.equal));
+            }
         }
 
         if (iListDataChange != null) {
             iListDataChange.notifyDataSetChanged();
         }
     }
+
+//    private void handleQuoteUpdate(Symbol symbol) {
+//        double strike = rounded(Double.parseDouble(symbol.price) - 0.7 + Math.random(), 2);
+//        String price = String.valueOf(strike);
+//        if (!TextUtils.isEmpty(price)) {
+//            this.price.setValue(price);
+//        }
+//        String updown = String.valueOf(rounded(strike - Double.parseDouble(symbol.preclose), 2));
+//        if (!TextUtils.isEmpty(updown)) {
+//            this.updown.setValue(updown);
+//        }
+//        String updownRatio = String.valueOf(rounded(Math.abs(Double.parseDouble(updown)) / Double.parseDouble(symbol.preclose), 2));
+//        if (!TextUtils.isEmpty(updownRatio)) {
+//            this.updownRatio.setValue(updownRatio);
+//        }
+//        String bidPrice = String.valueOf(rounded(strike - 0.05, 2));
+//        if (!TextUtils.isEmpty(bidPrice)) {
+//            this.bidPrice.setValue(bidPrice);
+//        }
+//        String askPrice = String.valueOf(rounded(strike + 0.05, 2));
+//        if (!TextUtils.isEmpty(askPrice)) {
+//            this.askPrice.setValue(askPrice);
+//        }
+//        String volume = symbol.volume;
+//        if (!TextUtils.isEmpty(volume)) {
+//            this.volume.setValue(volume);
+//        }
+//        symbol.totalVolume = String.valueOf(Integer.valueOf(symbol.totalVolume) + (int)(Math.random()* 5));
+//        String totalVolume = symbol.totalVolume;
+//        if (!TextUtils.isEmpty(totalVolume)) {
+//            this.totalVolume.setValue(totalVolume);
+//        }
+//        String bidVolume = String.valueOf((int)(Math.random()* 5));
+//        if (!TextUtils.isEmpty(bidVolume)) {
+//            this.bidVolume.setValue(bidVolume);
+//        }
+//        String askVolume = String.valueOf((int)(Math.random()* 5));
+//        if (!TextUtils.isEmpty(askVolume)) {
+//            this.askVolume.setValue(askVolume);
+//        }
+//        String high = String.valueOf(rounded(strike + 1, 2));
+//        if (!TextUtils.isEmpty(high)) {
+//            this.high.setValue(high);
+//        }
+//        String low = String.valueOf(rounded(strike - 1, 2));
+//        if (!TextUtils.isEmpty(low)) {
+//            this.low.setValue(low);
+//        }
+//        String open = symbol.open;
+//        if (!TextUtils.isEmpty(open)) {
+//            this.open.setValue(open);
+//        }
+//        String amplitude = symbol.amplitude;
+//        if (!TextUtils.isEmpty(amplitude)) {
+//            this.amplitude.setValue(amplitude);
+//        }
+//        String preclose = symbol.preclose;
+//        if (!TextUtils.isEmpty(preclose)) {
+//            this.preclose.setValue(preclose);
+//        }
+//        String time = symbol.time;
+//        if (!TextUtils.isEmpty(time)) {
+//            this.time.setValue(time);
+//        }
+//
+//        double value = strike - Double.parseDouble(open);
+//        if (value > 0) {
+//            textColor.setValue(ContextCompat.getColor(mContext, R.color.up));
+//        } else if (value < 0) {
+//            textColor.setValue(ContextCompat.getColor(mContext, R.color.down));
+//        } else {
+//            textColor.setValue(ContextCompat.getColor(mContext, R.color.equal));
+//        }
+//
+//        if (iListDataChange != null) {
+//            iListDataChange.notifyDataSetChanged();
+//        }
+//    }
 
     private double rounded(double value, int places) {
         BigDecimal bd = new BigDecimal(value);

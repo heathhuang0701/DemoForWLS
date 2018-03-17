@@ -6,7 +6,7 @@ import com.liqi.android.demo_for_wls.EmptyFragment;
 import com.liqi.android.demo_for_wls.R;
 import com.liqi.android.demo_for_wls.main.view.BottomBar;
 import com.liqi.android.demo_for_wls.main.view.BottomBarTab;
-import com.liqi.android.demo_for_wls.symbols.SymbolListFragment;
+import com.liqi.android.demo_for_wls.symbols.SymbolsFragment;
 
 import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -29,9 +29,9 @@ public class MainActivity extends SupportActivity {
         setContentView(R.layout.activity_main);
         mBottomBar = findViewById(R.id.bottom_bar);
 
-        SupportFragment firstFragment = findFragment(SymbolListFragment.class);
+        SupportFragment firstFragment = findFragment(SymbolsFragment.class);
         if (firstFragment == null) {
-            mFragments[0] = SymbolListFragment.newInstance();
+            mFragments[0] = SymbolsFragment.newInstance();
             mFragments[1] = EmptyFragment.newInstance();
 
             loadMultipleRootFragment(

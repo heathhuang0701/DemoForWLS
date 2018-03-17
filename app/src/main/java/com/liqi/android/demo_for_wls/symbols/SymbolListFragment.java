@@ -32,27 +32,23 @@ import java.util.ArrayList;
 
 public class SymbolListFragment extends BaseFragment implements InterfaceUtil.IListDataChange {
 
-    public static SymbolListFragment newInstance() {
-        Bundle args = new Bundle();
+    public static SymbolListFragment newInstance(Bundle args) {
         SymbolListFragment fragment = new SymbolListFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    private LinearLayout mRootView;
-    private ListView listView_names;
-    private ListView listView_infos;
     private SymbolBriefAdapter adapter_1;
     private SymbolInfoAdapter adapter_2;
-    private ArrayList<ListView> listViews = new ArrayList<ListView>();
+    private ArrayList<ListView> listViews = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = (LinearLayout) inflater.inflate(R.layout.wls_fragment_symbol_list, container, false);
-        listView_names = mRootView.findViewById(R.id.listview_product_name);
-        listView_infos = mRootView.findViewById(R.id.listview_product_info);
+        LinearLayout mRootView = (LinearLayout) inflater.inflate(R.layout.wls_fragment_symbol_list, container, false);
+        ListView listView_names = mRootView.findViewById(R.id.listview_product_name);
+        ListView listView_infos = mRootView.findViewById(R.id.listview_product_info);
 
-        ArrayList<Symbol> symbols = FakeSymbols.genData();
+        ArrayList<Symbol> symbols = (ArrayList<Symbol>) getArguments().getSerializable("symbols");
         ArrayList<SymbolViewModel> viewModels = new ArrayList<>();
         for (Symbol symbol : symbols) {
             SymbolViewModel viewModel = new SymbolViewModel(getContext(), this, symbol);
